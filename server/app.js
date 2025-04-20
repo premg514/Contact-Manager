@@ -9,13 +9,17 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// ✅ CORS setup for your frontend
 app.use(
   cors({
     origin: "https://contact-manager-8zfg.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// ✅ Allow preflight OPTIONS requests
+app.options("*", cors());
 
 // Middleware
 app.use(express.json());
@@ -23,12 +27,12 @@ app.use(express.json());
 // Routes
 app.use("/api/contacts", contactRoutes);
 
-// Root route
+// Root
 app.get("/", (req, res) => {
   res.send("Contact API is running");
 });
 
-// DB Connection and server start
+// DB Connection and Server
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
