@@ -9,8 +9,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-//cors
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://contact-manager-8zfg.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 // Middleware
 app.use(express.json());
 
