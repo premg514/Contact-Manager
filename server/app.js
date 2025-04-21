@@ -10,13 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ✅ CORS setup for your frontend
-app.use(
-  cors({
-    origin: "https://contact-manager-8zfg.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors());
 
 // ✅ Allow preflight OPTIONS requests
 app.options("*", cors());
