@@ -12,9 +12,6 @@ const PORT = process.env.PORT || 5000;
 // ✅ CORS setup for your frontend
 app.use(cors());
 
-// ✅ Allow preflight OPTIONS requests
-app.options("*", cors());
-
 // Middleware
 app.use(express.json());
 
