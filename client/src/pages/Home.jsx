@@ -10,6 +10,7 @@ const Home = () => {
 
   const fetchContacts = async () => {
     const { data } = await API.get('/');
+    console.log(data)
     setContacts(data);
   };
 

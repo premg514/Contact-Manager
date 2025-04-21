@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ContactList = ({ contacts, onDelete }) => {
+  console.log(contacts)
   if (contacts.length === 0) {
     return (
       <div className="empty-contacts">
